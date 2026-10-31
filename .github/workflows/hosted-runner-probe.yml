@@ -1,0 +1,20 @@
+name: Hosted Runner Eligibility Probe
+
+on:
+  push:
+    branches:
+      - audit/hosted-runner-20261031
+    paths:
+      - .github/workflows/hosted-runner-probe.yml
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Verify hosted runner started
+        shell: bash
+        run: echo "HOSTED_RUNNER_STARTED=true"
